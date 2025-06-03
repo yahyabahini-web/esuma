@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Esma!</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #ffcce6, #ffb3d9, #cc99ff);
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            overflow: hidden;
+        }
+        
+        .cake-container {
+            position: relative;
+            width: 400px;
+            height: 500px;
+        }
+        
+        .cake {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+        
+        /* Cake layers */
+        .layer {
+            position: absolute;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .base {
+            width: 300px;
+            height: 120px;
+            background: linear-gradient(to right, #ff9a9e, #fad0c4);
+            bottom: 0;
+            left: 50px;
+        }
+        
+        .middle {
+            width: 250px;
+            height: 100px;
+            background: linear-gradient(to right, #a18cd1, #fbc2eb);
+            bottom: 120px;
+            left: 75px;
+        }
+        
+        .top {
+            width: 200px;
+            height: 80px;
+            background: linear-gradient(to right, #f6d365, #fda085);
+            bottom: 220px;
+            left: 100px;
+        }
+        
+        /* Icing decorations */
+        .icing {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .icing-1 {
+            width: 30px;
+            height: 30px;
+            bottom: 300px;
+            left: 120px;
+            background: #ffcccc;
+            animation: pulse 2s infinite;
+        }
+        
+        .icing-2 {
+            width: 25px;
+            height: 25px;
+            bottom: 280px;
+            left: 200px;
+            background: #ccffcc;
+            animation: pulse 2.5s infinite;
+        }
+        
+        .icing-3 {
+            width: 20px;
+            height: 20px;
+            bottom: 260px;
+            left: 160px;
+            background: #ccccff;
+            animation: pulse 3s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+        
+        /* Candle */
+        .candle {
+            position: absolute;
+            width: 10px;
+            height: 80px;
+            background: linear-gradient(to bottom, #ffff00, #ffcc00);
+            bottom: 300px;
+            left: 195px;
+            border-radius: 5px;
+            box-shadow: 0 0 20px #ffff00;
+            animation: flicker 0.5s infinite alternate;
+        }
+        
+        .flame {
+            position: absolute;
+            width: 15px;
+            height: 30px;
+            background: linear-gradient(to bottom, white, #ff9900);
+            border-radius: 50% 50% 20% 20%;
+            bottom: 380px;
+            left: 197px;
+            filter: blur(1px);
+            animation: flicker 0.3s infinite alternate, dance 2s infinite;
+        }
+        
+        @keyframes flicker {
+            0% { opacity: 0.8; transform: scale(1); }
+            100% { opacity: 1; transform: scale(1.1); }
+        }
+        
+        @keyframes dance {
+            0%, 100% { transform: rotate(-3deg); }
+            50% { transform: rotate(3deg); }
+        }
+        
+        /* Message */
+        .message {
+            position: absolute;
+            bottom: 400px;
+            width: 100%;
+            text-align: center;
+            color: #ff0066;
+            font-size: 32px;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            animation: colorChange 5s infinite;
+        }
+        
+        @keyframes colorChange {
+            0% { color: #ff0066; }
+            25% { color: #9900ff; }
+            50% { color: #00ccff; }
+            75% { color: #00ff99; }
+            100% { color: #ff0066; }
+        }
+        
+        /* Sparkles */
+        .sparkle {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            pointer-events: none;
+            animation: sparkle 1s forwards;
+        }
+        
+        @keyframes sparkle {
+            0% { transform: scale(0); opacity: 1; }
+            100% { transform: scale(1); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="cake-container">
+        <div class="cake">
+            <div class="layer base"></div>
+            <div class="layer middle"></div>
+            <div class="layer top"></div>
+            
+            <div class="icing icing-1"></div>
+            <div class="icing icing-2"></div>
+            <div class="icing icing-3"></div>
+            
+            <div class="candle"></div>
+            <div class="flame"></div>
+            
+            <div class="message">Happy Birthday Esma!</div>
+        </div>
+    </div>
+
+    <script>
+        // Create sparkles on click
+        document.addEventListener('click', function(e) {
+            for (let i = 0; i < 10; i++) {
+                createSparkle(e.clientX, e.clientY);
+            }
+        });
+        
+        function createSparkle(x, y) {
+            const sparkle = document.createElement('div');
+            sparkle.className = 'sparkle';
+            sparkle.style.left = x + 'px';
+            sparkle.style.top = y + 'px';
+            sparkle.style.width = Math.random() * 15 + 5 + 'px';
+            sparkle.style.height = sparkle.style.width;
+            sparkle.style.animationDuration = Math.random() * 0.5 + 0.5 + 's';
+            document.body.appendChild(sparkle);
+            
+            setTimeout(() => {
+                sparkle.remove();
+            }, 1000);
+        }
+        
+        // Automatic sparkles
+        setInterval(function() {
+            const x = Math.random() * window.innerWidth;
+            const y = Math.random() * window.innerHeight;
+            createSparkle(x, y);
+        }, 300);
+    </script>
+</body>
+</html>
